@@ -1,0 +1,36 @@
+.filter-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-tab:hover { background: var(--bg-main); color: var(--text-primary); }
+.filter-tab.active {
+  background: var(--accent-light);
+  border-color: #c7d2fe;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.filter-count {
+  background: var(--bg-main);
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 11px;
+}
+.filter-tab.active .filter-count { background: rgba(47,84,235,0.12); }
