@@ -9,7 +9,9 @@ const authRoutes = require('./routes/auth')
 
 const app = express()
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173'] }))
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173']
+if (process.env.FRONTEND_URL) allowedOrigins.push(process.env.FRONTEND_URL)
+app.use(cors({ origin: allowedOrigins }))
 app.use(express.json())
 
 // Routes
@@ -30,8 +32,8 @@ app.use((err, req, res, next) => {
 })
 
 const PORT = process.env.PORT || 5000
-const server = app.listen(PORT, '127.0.0.1', () => {
-  console.log(`Backend running on http://127.0.0.1:${PORT}`)
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Backend running on port ${PORT}`)
 })
 
 server.on('error', (err) => {
